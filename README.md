@@ -1,4 +1,4 @@
 Friendship
 Bir profil oluşturarak başka ülke ve şehirdeki ortak hobilere sahip insanları bir araya getirip buluşturan bir uygulama.
 
-furkanacikkol.github.io/test
+https://furkanacikkol.github.io/test/#/
