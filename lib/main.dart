@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:saglik/Screen/SignUp/signup.dart';
+import 'package:saglik/Screen/haber.dart';
 import 'package:saglik/Screen/hakkinda.dart';
-import 'Screen/Home/home.dart';
-import 'Screen/Home/words.dart';
+import 'Screen/Home/graphics.dart';
+import 'Screen/UserInfo/profile.dart';
 import 'customwidget/mybutton.dart';
 import 'Screen/Login/login.dart';
 
@@ -85,7 +86,7 @@ class _WellcomeState extends State<Wellcome> {
                   Navigator.push(
                       context,
                       MaterialPageRoute(
-                          builder: (context) => HomePage()));
+                          builder: (context) => Hakkinda()));
                 },
                 icon: Icon(Icons.info_outline_rounded))
 

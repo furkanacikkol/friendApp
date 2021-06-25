@@ -1,6 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:saglik/Screen/Home/graphics.dart';
 import 'package:saglik/Screen/Home/words.dart';
+import 'package:saglik/customwidget/mybutton.dart';
 import 'package:saglik/customwidget/myclipper.dart';
+
+import '../haber.dart';
 
 class HomePage extends StatefulWidget {
   @override
@@ -10,6 +14,7 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
   var getData = [];
   int fridens;
+
   @override
   void initState() {
     WidgetsBinding.instance.addPostFrameCallback((_) => Data());
@@ -21,6 +26,7 @@ class _HomePageState extends State<HomePage> {
     fridens = getData.length;
     setState(() {});
   }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -46,7 +52,7 @@ class _HomePageState extends State<HomePage> {
                             color: Colors.white38),
                         child: Center(
                           child: Text(
-                            "Takip\n"+ fridens.toString(),
+                            "Takip\n" + fridens.toString(),
                             style: TextStyle(
                                 fontSize: 24,
                                 fontFamily: "Poppins",
@@ -89,7 +95,7 @@ class _HomePageState extends State<HomePage> {
                                   Colors.blue,
                                 ),
                                 backgroundColor: Colors.white,
-                                value: 1,
+                                value: .8,
                               ))),
                         ),
                         Center(
@@ -102,12 +108,36 @@ class _HomePageState extends State<HomePage> {
                                     fontFamily: "Poppins"))),
                       ],
                     )),
+                SizedBox(height: 15,),
+                MyButton(
+                    text: "Haberler",
+                    onCustomButtonPressed: () {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => HaberPage(),
+                          ));
+                    },
+                    icon: Icon(Icons.access_time_rounded)),
+                SizedBox(height: 10,),
+
+                MyButton(
+                    text: "Kullanıcı Cinsiyet Grafiği",
+                    onCustomButtonPressed: () {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => GraphicsPage(),
+                          ));
+                    },
+                    icon: Icon(Icons.graphic_eq_rounded)),
+
                 Expanded(
                     child: Align(
                         alignment: Alignment.bottomCenter,
                         child: Container(
-                            width: 250,
-                            height: 125,
+                            width: 150,
+                            height: 75,
                             decoration: BoxDecoration(
                                 borderRadius: BorderRadius.circular(10.0),
                                 color: Colors.white38),
@@ -116,7 +146,7 @@ class _HomePageState extends State<HomePage> {
                               child: Text(
                                 "Günün sözleri için tıklayın",
                                 style: TextStyle(
-                                    fontSize: 24,
+                                    fontSize: 16,
                                     fontFamily: "Poppins",
                                     color: Colors.white),
                                 textAlign: TextAlign.center,
@@ -125,8 +155,9 @@ class _HomePageState extends State<HomePage> {
                                 Navigator.push(
                                     context,
                                     MaterialPageRoute(
-                                        builder: (context) => WordsPage(),
-                                      settings: RouteSettings(arguments: getData),
+                                      builder: (context) => WordsPage(),
+                                      settings:
+                                          RouteSettings(arguments: getData),
                                     ));
                               },
                             ))))),

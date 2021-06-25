@@ -1,5 +1,6 @@
 import 'dart:convert';
 
+import 'package:countup/countup.dart';
 import 'package:flutter/material.dart';
 import 'package:saglik/Screen/UserInfo/hobies.dart';
 import 'package:saglik/customwidget/mybutton.dart';
@@ -15,6 +16,7 @@ class _ProfilePageState extends State<ProfilePage> {
   String name = "", age = "", gender = "", happy = "", health = "";
   String img = "assets/images/female.png";
   var getData = [];
+
 
   @override
   void initState() {
@@ -82,7 +84,7 @@ class _ProfilePageState extends State<ProfilePage> {
                           Colors.blue,
                         ),
                         backgroundColor: Colors.white,
-                        value: 0.8,
+                        value: .8,
                       ))),
                   ),
                   Center(child: Text("Profil Doluluğu\n%80",
@@ -94,6 +96,7 @@ class _ProfilePageState extends State<ProfilePage> {
           const SizedBox(
             height: 64,
           ),
+
           MyButton(text: "Profili Tamamla", onCustomButtonPressed: (){
             Navigator.push(
                 context,
