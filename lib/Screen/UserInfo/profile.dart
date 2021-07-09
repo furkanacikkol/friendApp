@@ -104,7 +104,7 @@ class _ProfilePageState extends State<ProfilePage> {
                   builder: (context) => HobiesPage(),
                   settings: RouteSettings(arguments: getData),
                 ));
-          }, icon: Icon(Icons.add))
+          }, icon: Icon(Icons.add,color: Colors.white))
         ],
       ),
     ));

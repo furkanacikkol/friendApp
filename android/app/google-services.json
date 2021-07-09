@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "827142079473",
+    "project_id": "flutter-9c12f",
+    "storage_bucket": "flutter-9c12f.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:827142079473:android:c886d89cf072d54f957a50",
+        "android_client_info": {
+          "package_name": "com.example.saglik"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "827142079473-c6t7er4uvmghf69oo84ebe12bt6bs1ab.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCimXLfUq8NamQWKG0Q37F3Bl2z06uD--4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "827142079473-c6t7er4uvmghf69oo84ebe12bt6bs1ab.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

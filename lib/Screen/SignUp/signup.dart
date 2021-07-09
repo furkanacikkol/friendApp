@@ -4,6 +4,7 @@ import 'package:saglik/customwidget/mybutton.dart';
 import 'package:saglik/customwidget/mydigitfield.dart';
 import 'package:saglik/customwidget/mytextfield.dart';
 import 'package:saglik/userinfo.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 
 class SignUpPage extends StatefulWidget {
   @override
@@ -16,7 +17,7 @@ class _SignUpPageState extends State<SignUpPage> {
   final passController = TextEditingController();
   final numberController = TextEditingController();
 
-  void addUser(User user) {
+  void addUser(MyUser user) {
     var data = [];
     data.add(user.name);
     data.add(user.email);
@@ -84,14 +85,15 @@ class _SignUpPageState extends State<SignUpPage> {
                     child: MyButton(
                         text: "Kayıt Ol",
                         onCustomButtonPressed: () {
-                          User user = User();
+                          _register();
+                          MyUser user = MyUser();
                           user.name = nameController.text;
                           user.email = emailController.text;
                           user.pass = passController.text;
                           user.number = double.parse(numberController.text);
                           addUser(user);
                         },
-                        icon: Icon(Icons.add)),
+                        icon: Icon(Icons.add,color: Colors.white)),
                   ),
                   GestureDetector(
                       onTap: () {
@@ -109,5 +111,15 @@ class _SignUpPageState extends State<SignUpPage> {
                 ],
               ),
             ))));
+  }
+
+
+  void _register() async {
+    final User user = (await
+    FirebaseAuth.instance.createUserWithEmailAndPassword(
+      email: emailController.text,
+      password: passController.text,
+    )
+    ).user;
   }
 }

@@ -1,13 +1,16 @@
 import 'package:flutter/material.dart';
+import 'package:saglik/Screen/Home/home.dart';
 import 'package:saglik/Screen/SignUp/signup.dart';
-import 'package:saglik/Screen/haber.dart';
-import 'package:saglik/Screen/hakkinda.dart';
-import 'Screen/Home/graphics.dart';
-import 'Screen/UserInfo/profile.dart';
+import 'package:saglik/Screen/Views/create_human.dart';
+import 'Screen/Views/list_human.dart';
+import 'Screen/weatherloading.dart';
 import 'customwidget/mybutton.dart';
 import 'Screen/Login/login.dart';
+import 'package:firebase_core/firebase_core.dart';
 
-void main() {
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp();
   runApp(MyApp());
 }
 
@@ -31,14 +34,28 @@ class Wellcome extends StatefulWidget {
 }
 
 class _WellcomeState extends State<Wellcome> {
+  String background = "assets/images/background.png";
+  String background2 = "assets/images/background2.png";
+  String bgTemp = "assets/images/background.png";
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Container(
+      body: GestureDetector(
+        onDoubleTap: (){
+          setState(() {
+
+          });
+          if(bgTemp == background)
+            bgTemp = background2;
+          else
+            bgTemp = background;
+        },
+
+      child: Container(
         constraints: BoxConstraints.expand(),
         decoration: BoxDecoration(
           image: DecorationImage(
-            image: AssetImage('assets/images/background.png'),
+            image: AssetImage(bgTemp),
             fit: BoxFit.cover,
           ),
         ),
@@ -57,7 +74,7 @@ class _WellcomeState extends State<Wellcome> {
                     fontFamily: 'Poppins',
                   ),
                 )),
-            const SizedBox(height: 128.0),
+            const SizedBox(height: 100.0),
              MyButton(
           text: "Giriş Yap",
           onCustomButtonPressed: () {
@@ -80,20 +97,31 @@ class _WellcomeState extends State<Wellcome> {
                   Icons.supervisor_account_outlined, color: Colors.white,),
               ),
             ),
+                  MyButton(
+                      text: "Hava durumu",
+                      onCustomButtonPressed: () {
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => LoadingScreen(),
+                            ));
+                      },
+                      icon: Icon(Icons.wb_cloudy_rounded , color: Colors.white),),
+                  SizedBox(height: 10,),
             MyButton(
                 text: "Uygulama Hakkında",
                 onCustomButtonPressed: () {
                   Navigator.push(
                       context,
                       MaterialPageRoute(
-                          builder: (context) => Hakkinda()));
+                          builder: (context) => CreatePage()));
                 },
-                icon: Icon(Icons.info_outline_rounded))
+                icon: Icon(Icons.info_outline_rounded,color: Colors.white))
 
         ],
 
       ),
     )),
-    );
+    ));
   }
 }

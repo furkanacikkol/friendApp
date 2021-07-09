@@ -75,7 +75,7 @@ class _HobiesPageState extends State<HobiesPage> {
                           v1 = false;
                         });
                       },
-                      icon: Icon(Icons.plus_one_rounded)),
+                      icon: Icon(Icons.plus_one_rounded,color: Colors.white)),
                 ),
                 const SizedBox(
                   height: 8,
@@ -90,7 +90,7 @@ class _HobiesPageState extends State<HobiesPage> {
                           v2 = false;
                         });
                       },
-                      icon: Icon(Icons.plus_one_rounded)),
+                      icon: Icon(Icons.plus_one_rounded,color: Colors.white)),
                 ),
                 const SizedBox(
                   height: 8,
@@ -105,7 +105,7 @@ class _HobiesPageState extends State<HobiesPage> {
                           v3 = false;
                         });
                       },
-                      icon: Icon(Icons.plus_one_rounded)),
+                      icon: Icon(Icons.plus_one_rounded,color: Colors.white)),
                 ),
                 const SizedBox(
                   height: 8,
@@ -120,7 +120,7 @@ class _HobiesPageState extends State<HobiesPage> {
                             v4 = false;
                           });
                         },
-                        icon: Icon(Icons.plus_one_rounded))),
+                        icon: Icon(Icons.plus_one_rounded,color: Colors.white))),
                 Align(
                     alignment: Alignment.bottomRight,
 

@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:saglik/Screen/Home/home.dart';
-import 'package:saglik/Screen/Home/words.dart';
 import 'package:saglik/customwidget/mybutton.dart';
 import 'package:saglik/userinfo.dart';
+
 
 class FriendsPage extends StatefulWidget {
   @override
@@ -10,20 +10,20 @@ class FriendsPage extends StatefulWidget {
 }
 
 class _FriendsPageState extends State<FriendsPage> {
-  List<User> users = [
-    User.info("Ayşe", "ayse123@hotmail.com", 05394561212, 23, "Kadın", "Mutlu",
+  List<MyUser> users = [
+    MyUser.info("Ayşe", "ayse123@hotmail.com", 05394561212, 23, "Kadın", "Mutlu",
         "Hasta", "Yeni arkadaşlıklar edinmek istiyorum"),
-    User.info("Furkan", "furkan1903@gmail.com", 05551113322, 21, "Erkek",
+    MyUser.info("Furkan", "furkan1903@gmail.com", 05551113322, 21, "Erkek",
         "Mutlu", "Sağlıklı", "Dizi ve filmlere meraklıyım"),
-    User.info("Melis", "melis@selcuk.edu.tr", 05991239874, 27, "Kadın",
+    MyUser.info("Melis", "melis@selcuk.edu.tr", 05991239874, 27, "Kadın",
         "Mutsuz", "Hasta", "Dünyadaki diğer kültürleri öğrenmek istiyorum"),
-    User.info("Deniz", "deniz_deniz@outlook.com", 05135123252, 36, "Kadın",
+    MyUser.info("Deniz", "deniz_deniz@outlook.com", 05135123252, 36, "Kadın",
         "Mutlu", "Sağlıklı", "Edebiyat ve tarihe ilgiliyim"),
-    User.info("Berk", "berk1453@gmail.com", 05788523641, 16, "Erkek", "Mutsuz",
+    MyUser.info("Berk", "berk1453@gmail.com", 05788523641, 16, "Erkek", "Mutsuz",
         "Hasta", "Üniversite sınavına hazırlanıyorum"),
-    User.info("İrem", "irem17853@art.com", 05396664545, 45, "Kadın", "Mutlu",
+    MyUser.info("İrem", "irem17853@art.com", 05396664545, 45, "Kadın", "Mutlu",
         "Hasta", "Sanata hayran birisiyim"),
-    User.info("Can", "can1156684@outlook.com", 0531624563, 35, "Erkek",
+    MyUser.info("Can", "can1156684@outlook.com", 0531624563, 35, "Erkek",
         "Mutsuz", "Sağlıklı", "Müzik dinlemeyi severim")
   ];
 
@@ -126,11 +126,13 @@ class _FriendsPageState extends State<FriendsPage> {
                   settings: RouteSettings(arguments: friend),
                 ),
                     (route) => route.isFirst);
-          }, icon: Icon(Icons.arrow_forward_ios_rounded))),
+          }, icon: Icon(Icons.arrow_forward_ios_rounded,color: Colors.white))),
         ],
       ),
     ));
   }
+
+
 }
 
 void showDialog(BuildContext context) {
@@ -161,4 +163,5 @@ void showDialog(BuildContext context) {
       );
     },
   );
+
 }

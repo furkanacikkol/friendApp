@@ -29,7 +29,7 @@ class _UserPageState extends State<UserPage> {
   void GetData(double age){
     var userData = [];
     userData = ModalRoute.of(context).settings.arguments;
-    User user = User();
+    MyUser user = MyUser();
     user.gender = selectedGender.toString();
     user.age = int.parse(age.round().toString());
     userData.add(user.gender);
@@ -137,7 +137,7 @@ class _UserPageState extends State<UserPage> {
                       GetData(_value);
                     });
                   },
-                  icon: Icon(Icons.all_inclusive_outlined))
+                  icon: Icon(Icons.all_inclusive_outlined,color: Colors.white))
             ],
           ))
         ],

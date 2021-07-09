@@ -25,6 +25,9 @@ class WordsPage extends StatefulWidget {
 class _WordsPageState extends State<WordsPage> {
   String text =
       "Yorma kendini... Bırak hayatına eşlik etmek isteyenler seninle gelsin.";
+  String wordImg = "assets/images/wordbackground.png";
+  String wordImg2 = "assets/images/wordbackground2.png";
+  String img = "assets/images/wordbackground.png";
 
   @override
   Widget build(BuildContext context) {
@@ -56,7 +59,7 @@ class _WordsPageState extends State<WordsPage> {
                     borderRadius: BorderRadius.circular(10.0),
                     color: Colors.black,
                     image: DecorationImage(
-                      image: AssetImage("assets/images/wordbackground.png"),
+                      image: AssetImage(img),
                       fit: BoxFit.cover,
                     )),
                 child: Padding(
@@ -79,6 +82,15 @@ class _WordsPageState extends State<WordsPage> {
                 text = sozler[random.nextInt(9)];
               });
             },
+            onLongPress: (){
+              setState(() {
+
+              });
+              if(img == wordImg)
+                img = wordImg2;
+              else
+                img = wordImg;
+            },
           ),
           const SizedBox(height: 32),
           Text(
@@ -100,7 +112,7 @@ class _WordsPageState extends State<WordsPage> {
                   builder: (context) => HomePage(),
                   settings: RouteSettings(arguments: data)
                 ));
-          }, icon: Icon(Icons.home))
+          }, icon: Icon(Icons.home,color: Colors.white))
         ],
       ),
     ));

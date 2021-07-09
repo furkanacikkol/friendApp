@@ -1,3 +1,6 @@
+import 'dart:math';
+
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:saglik/Screen/UserInfo/user.dart';
 import 'package:saglik/customwidget/mybutton.dart';
@@ -13,26 +16,6 @@ class LoginPage extends StatefulWidget {
 class _LoginPageState extends State<LoginPage> {
   final emailController = TextEditingController();
   final passController = TextEditingController();
-
-  void checkInfo() {
-    var getData = [];
-    getData = ModalRoute.of(context).settings.arguments;
-    if (getData[1].toString() == emailController.text &&
-        getData[2].toString() == passController.text) {
-      Navigator.pushAndRemoveUntil(
-          context,
-          MaterialPageRoute(builder: (context) => UserPage(),
-            settings: RouteSettings(arguments: getData),
-          ),
-              (route) => route.isFirst);
-    } else {
-      final snackBar = SnackBar(
-        content: Text('Giriş bilgileriniz yanlış!'),
-        backgroundColor: Colors.red,
-      );
-      ScaffoldMessenger.of(context).showSnackBar(snackBar);
-    }
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -70,9 +53,9 @@ class _LoginPageState extends State<LoginPage> {
                     child: MyButton(
                         text: "Giriş Yap",
                         onCustomButtonPressed: () {
-                          checkInfo();
+                          _signInWithEmailAndPassword();
                         },
-                        icon: Icon(Icons.add)),
+                        icon: Icon(Icons.add,color: Colors.white)),
                   ),
                   Padding(
                     padding: EdgeInsets.fromLTRB(0, 32, 0, 16),
@@ -93,5 +76,66 @@ class _LoginPageState extends State<LoginPage> {
                 ],
               ),
             ))));
+  }
+
+  void _signInWithEmailAndPassword() async {
+    try {
+      final User user = (await FirebaseAuth.instance.signInWithEmailAndPassword(
+        email: emailController.text,
+        password: passController.text,
+      ))
+          .user;
+
+      //if (user != null) {
+      setState(() {
+        print("giriş başarılı");
+        final snackBar = SnackBar(
+          content: Text('Giriş başarılı!'),
+          backgroundColor: Colors.green,
+        );
+        ScaffoldMessenger.of(context).showSnackBar(snackBar);
+        var getData = [];
+        getData = ModalRoute.of(context).settings.arguments;
+        Navigator.pushAndRemoveUntil(
+            context,
+            MaterialPageRoute(
+              builder: (context) => UserPage(),
+              settings: RouteSettings(arguments: getData),
+            ),
+            (route) => route.isFirst);
+      });
+      /* } else if(error.Code) {
+        setState(() {
+          print("giriş başarısız");
+          final snackBar = SnackBar(
+            content: Text('Giriş bilgileriniz yanlış!'),
+            backgroundColor: Colors.red,
+          );
+          ScaffoldMessenger.of(context).showSnackBar(snackBar);
+        });
+      }*/
+    } catch (e) {
+      //print(e.message);   // On this line, call your class and show the error message.
+      switch (e.message) {
+        case "There is no user record corresponding to this identifier. The user may have been deleted.":
+          final snackBar = SnackBar(
+            content: Text('Giriş bilgileriniz yanlış!'),
+            backgroundColor: Colors.red,
+          );
+          ScaffoldMessenger.of(context).showSnackBar(snackBar);
+          break;
+        case 'The password is invalid or the user does not have a password.':
+          final snackBar = SnackBar(
+            content: Text('Giriş bilgileriniz yanlış!'),
+            backgroundColor: Colors.red,
+          );
+          ScaffoldMessenger.of(context).showSnackBar(snackBar);
+          break;
+
+        default:
+          print("Hata");
+          break;
+      }
+    }
   }
 }

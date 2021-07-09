@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
 
 class MyClipper extends StatelessWidget {
-  String image;
 
-  MyClipper(@required this.image);
 
   @override
   Widget build(BuildContext context) {
@@ -17,10 +15,10 @@ class MyClipper extends StatelessWidget {
           decoration: BoxDecoration(
             color: Colors.white38
           ),
-            child: Text("Profilim",style:  TextStyle(fontSize: 64, fontFamily: "Poppins",color: Colors.white),
-              textAlign: TextAlign.center,
-            ),
-
+              child: CircleAvatar(
+                backgroundColor: Colors.transparent,
+                child: Image.asset('assets/images/male.png'),
+              ),
         ),
       ),
     );

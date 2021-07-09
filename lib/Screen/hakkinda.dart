@@ -28,7 +28,7 @@ class _HakkindaState extends State<Hakkinda> {
                 ),
                 const SizedBox(height: 16,),
                 Text(
-                  "Bu uygulama Dr. Öğretim Üyesi Ahmet Cevahir ÇINAR tarafından yürütülen 3311456 kodlu MOBİL PROGRAMLAMA dersi kapsamında 193311006 numaralı Mustafa Furkan AÇIKKOL tarafından 30 Nisan 2021 günü yapılmıştır.",
+                  "Bu uygulama Dr. Öğretim Üyesi Ahmet Cevahir ÇINAR tarafından yürütülen 3301456 kodlu MOBİL PROGRAMLAMA dersi kapsamında 193311006 numaralı MUSTAFA FURKAN AÇIKKOL tarafından 9 Temmuz 2021 günü yapılmıştır.",
                   style: TextStyle(
                       fontSize: 16,
                       fontFamily: "Poppins",

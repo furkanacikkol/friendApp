@@ -1,10 +1,11 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:saglik/Screen/Home/graphics.dart';
 import 'package:saglik/Screen/Home/words.dart';
+import 'package:saglik/Screen/UserInfo/profilepic.dart';
 import 'package:saglik/customwidget/mybutton.dart';
 import 'package:saglik/customwidget/myclipper.dart';
 
-import '../haber.dart';
 
 class HomePage extends StatefulWidget {
   @override
@@ -40,7 +41,36 @@ class _HomePageState extends State<HomePage> {
             ),
             child: Column(
               children: <Widget>[
-                MyClipper("image"),
+                GestureDetector(
+                  child: MyClipper(),
+                  onLongPressEnd: (details) {
+                    showCupertinoModalPopup<void>(
+                      context: context,
+                      builder: (BuildContext context) => CupertinoActionSheet(
+                        title: const Text('Profil Fotoğrafı'),
+
+                        actions: <CupertinoActionSheetAction>[
+                          CupertinoActionSheetAction(
+                            child: const Text('Galeriden Seç'),
+                            onPressed: () {
+                              Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                    builder: (context) => ProfilPicPage(),
+                                  ));
+                            },
+                          ),
+
+                        ],
+                      ),
+                    );
+                    /* Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => ProfilPicPage(),
+                        ));*/
+                  },
+                ),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceAround,
                   children: <Widget>[
@@ -95,7 +125,7 @@ class _HomePageState extends State<HomePage> {
                                   Colors.blue,
                                 ),
                                 backgroundColor: Colors.white,
-                                value: .8,
+                                value: 1,
                               ))),
                         ),
                         Center(
@@ -108,19 +138,9 @@ class _HomePageState extends State<HomePage> {
                                     fontFamily: "Poppins"))),
                       ],
                     )),
-                SizedBox(height: 15,),
-                MyButton(
-                    text: "Haberler",
-                    onCustomButtonPressed: () {
-                      Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                            builder: (context) => HaberPage(),
-                          ));
-                    },
-                    icon: Icon(Icons.access_time_rounded)),
-                SizedBox(height: 10,),
-
+                SizedBox(
+                  height: 50,
+                ),
                 MyButton(
                     text: "Kullanıcı Cinsiyet Grafiği",
                     onCustomButtonPressed: () {
@@ -130,8 +150,7 @@ class _HomePageState extends State<HomePage> {
                             builder: (context) => GraphicsPage(),
                           ));
                     },
-                    icon: Icon(Icons.graphic_eq_rounded)),
-
+                    icon: Icon(Icons.graphic_eq_rounded, color: Colors.white)),
                 Expanded(
                     child: Align(
                         alignment: Alignment.bottomCenter,

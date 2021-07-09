@@ -16,7 +16,7 @@ class _FeelPageState extends State<FeelPage> {
   void SendData(){
     var getData = [];
     getData = ModalRoute.of(context).settings.arguments;
-    User user = User();
+    MyUser user = MyUser();
     user.happy =_character.toString().split('.').last;
     user.health = _health.toString().split('.').last;
     getData.add(user.happy);
@@ -167,7 +167,7 @@ class _FeelPageState extends State<FeelPage> {
             const SizedBox(height: 32,),
             MyButton(text: "Kaydet", onCustomButtonPressed: (){
               SendData();
-            }, icon: Icon(Icons.add))
+            }, icon: Icon(Icons.add,color: Colors.white))
           ],
         ),
       ),
